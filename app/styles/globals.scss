@@ -400,7 +400,7 @@ pre {
   user-select: text;
 }
 
-/* 隐藏包含 Github 链接的整个按钮容器，防止留白 */
-div[class*="home_sidebar-action"]:has(a[href*="github.com"]) {
+/* 只隐藏 href 包含 github 的链接，以及它上一层的按钮容器 */
+.home_sidebar-action__IVfyJ:has(a[href*="github.com"]) {
   display: none !important;
 }

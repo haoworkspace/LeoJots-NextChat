@@ -1,4 +1,7 @@
 User-agent: *
 Disallow: /
+
+Content-signal: search=no,ai-input=no,ai-train=no
+
 User-agent: vitals.vercel-insights.com
 Allow: /

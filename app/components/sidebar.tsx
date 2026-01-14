@@ -39,7 +39,6 @@ const LeoJotsLogo = () => (
     viewBox="0 0 280 60" 
     fill="none" 
     xmlns="http://www.w3.org/2000/svg" 
-    // 强制解除滤镜并放大尺寸至 210px
     style={{ 
       width: '100%', 
       height: 'auto', 
@@ -68,7 +67,6 @@ const LeoJotsLogo = () => (
       <circle className="animate-pulse-scale" cx="30" cy="34" r="3" fill="#0EA5E9" />
       <circle className="animate-pulse-scale" cx="42" cy="34" r="3" fill="#0EA5E9" style={{ animationDelay: '0.5s' }} />
     </g>
-    {/* 锁定 Leo 为深蓝色，防止在 Light 模式下变灰 */}
     <text x="72" y="39" fontFamily="Inter, system-ui, sans-serif" fontWeight="800" fontSize="28" fill="#0F172A" letterSpacing="-0.03em">
       Leo<tspan fill="#4F46E5">Jots</tspan>
     </text>
@@ -289,8 +287,7 @@ export function SideBar(props: { className?: string }) {
       {...props}
     >
       <SideBarHeader
-        // 核心修改：移除 title, subTitle, logo
-        title={<LeoJotsLogo />}
+        title={<LeoJotsLogo />}         // 保持你的彩色大 Logo
         subTitle={null}
         logo={null}
         shouldNarrow={shouldNarrow}
@@ -367,6 +364,22 @@ export function SideBar(props: { className?: string }) {
                 }}
               />
             </div>
+            {/* --- 新增：左下角个人信息板块 --- */}
+            {!shouldNarrow && (
+              <div style={{ 
+                display: 'flex', 
+                flexDirection: 'column', 
+                justifyContent: 'center',
+                padding: '0 10px',
+                opacity: 0.6,
+                fontSize: '10px',
+                lineHeight: '1.2',
+                fontFamily: 'monospace'
+              }}>
+                <div style={{ fontWeight: 'bold' }}>LEO</div>
+                <div>v1.2.0-stable</div>
+              </div>
+            )}
             <div className={styles["sidebar-action"]}>
               <Link to={Path.Settings}>
                 <IconButton

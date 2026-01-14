@@ -419,17 +419,20 @@ pre {
     display: none !important; 
 }
 
-/* 隐藏“分享到 ShareGPT”按钮 */
+/* 隐藏分享按钮 */
 .exporter_preview-actions__EdSLJ button:nth-child(3) {
     display: none !important;
 }
 
-/* 隐藏预览图顶部品牌信息区 (Logo/标题/链接/模型信息) */
-.exporter_chat-info__N_j5m {
+/* 隐藏左侧 Logo、品牌名、链接和头像 */
+.exporter_logo__zu13e,
+.exporter_main-title__jjxAd,
+.exporter_sub-title__p1RCl,
+.exporter_icons__7WRoV {
     display: none !important;
 }
 
-/* 移除顶栏后的顶部间距优化 */
-.exporter_preview-body__qK5Zf {
-    padding-top: 2rem !important;
+/* 确保右侧信息保持靠右对齐 */
+.exporter_chat-info__N_j5m {
+    justify-content: flex-end !important;
 }

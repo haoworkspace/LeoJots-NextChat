@@ -5,7 +5,6 @@ import styles from "./home.module.scss";
 import { IconButton } from "./button";
 import SettingsIcon from "../icons/settings.svg";
 import GithubIcon from "../icons/github.svg";
-// 默认图标可以保留导入，但我们在下方会使用自定义组件替换它
 import ChatGptIcon from "../icons/chatgpt.svg";
 import AddIcon from "../icons/add.svg";
 import DeleteIcon from "../icons/delete.svg";
@@ -34,9 +33,14 @@ import { Selector, showConfirm } from "./ui-lib";
 import clsx from "clsx";
 import { isMcpEnabled } from "../mcp/actions";
 
-// --- 自定义 LeoJots Logo 组件 ---
+// --- 自定义 LeoJots Logo 组件 (移除了固定宽度，使其自适应) ---
 const LeoJotsLogo = () => (
-  <svg className="h-9 w-auto" viewBox="0 0 280 60" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: '140px', height: 'auto' }}>
+  <svg 
+    viewBox="0 0 280 60" 
+    fill="none" 
+    xmlns="http://www.w3.org/2000/svg" 
+    style={{ width: '100%', height: 'auto', maxWidth: '180px' }}
+  >
     <style>{`
       .animate-float { animation: float 3s ease-in-out infinite; }
       .animate-pulse-scale { 
@@ -275,9 +279,9 @@ export function SideBar(props: { className?: string }) {
       {...props}
     >
       <SideBarHeader
-        title="LeoJots"                 // 已修改标题
-        subTitle="Your Personal AI Hub." // 你可以根据需要修改副标题
-        logo={<LeoJotsLogo />}         // 已应用你的自定义 SVG Logo
+        title={<LeoJotsLogo />}         // 整个板块只显示 Logo
+        subTitle={null}                 // 移除文案
+        logo={null}                     // 移除右侧小图标
         shouldNarrow={shouldNarrow}
       >
         <div className={styles["sidebar-header-bar"]}>

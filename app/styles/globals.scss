@@ -418,3 +418,18 @@ pre {
 .settings_settings__427bK .ui-lib_list__1KN23:has(input[aria-label="实时聊天"]) { 
     display: none !important; 
 }
+
+/* 隐藏“分享到 ShareGPT”按钮 */
+.exporter_preview-actions__EdSLJ button:nth-child(3) {
+    display: none !important;
+}
+
+/* 隐藏预览图顶部品牌信息区 (Logo/标题/链接/模型信息) */
+.exporter_chat-info__N_j5m {
+    display: none !important;
+}
+
+/* 移除顶栏后的顶部间距优化 */
+.exporter_preview-body__qK5Zf {
+    padding-top: 2rem !important;
+}

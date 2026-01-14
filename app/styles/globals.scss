@@ -404,3 +404,7 @@ pre {
 .home_sidebar-action__IVfyJ:has(a[href*="github.com"]) {
   display: none !important;
 }
+/* 隐藏 NextChat AI 官方推广板块 */
+#custom-model .settings_subtitle-button__iNyot {
+    display: none !important;
+}

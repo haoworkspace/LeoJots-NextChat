@@ -399,3 +399,8 @@ pre {
 .copyable {
   user-select: text;
 }
+
+/* 隐藏包含 Github 链接的整个按钮容器，防止留白 */
+div[class*="home_sidebar-action"]:has(a[href*="github.com"]) {
+  display: none !important;
+}

@@ -39,7 +39,8 @@ const LeoJotsLogo = () => (
     viewBox="0 0 280 60" 
     fill="none" 
     xmlns="http://www.w3.org/2000/svg" 
-    style={{ width: '100%', height: 'auto', maxWidth: '180px' }}
+    // 关键：添加 filter: 'none' 和 opacity: 1 来覆盖 NextChat 的默认样式
+    style={{ width: '100%', height: 'auto', maxWidth: '180px', filter: 'none', opacity: 1 }}
   >
     <style>{`
       .animate-float { animation: float 3s ease-in-out infinite; }
@@ -59,7 +60,8 @@ const LeoJotsLogo = () => (
       <circle className="animate-pulse-scale" cx="30" cy="34" r="3" fill="#0EA5E9" />
       <circle className="animate-pulse-scale" cx="42" cy="34" r="3" fill="#0EA5E9" style={{ animationDelay: '0.5s' }} />
     </g>
-    <text x="72" y="39" fontFamily="Inter, system-ui, sans-serif" fontWeight="800" fontSize="28" fill="currentColor" letterSpacing="-0.03em">
+    {/* 关键：将 fill="currentColor" 改回固定的颜色值 #0F172A */}
+    <text x="72" y="39" fontFamily="Inter, system-ui, sans-serif" fontWeight="800" fontSize="28" fill="#0F172A" letterSpacing="-0.03em">
       Leo<tspan fill="#4F46E5">Jots</tspan>
     </text>
     <rect x="192" y="18" width="70" height="24" rx="6" fill="#EFF6FF" stroke="#BFDBFE" strokeWidth="1" />

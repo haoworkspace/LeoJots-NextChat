@@ -404,17 +404,17 @@ pre {
 .home_sidebar-action__IVfyJ:has(a[href*="github.com"]) { display: none !important; }
 .sidebar-header { padding: 20px; }
 
-/* 2. 设置页：隐藏官方推广、头像、版本检查 */
-#custom-model .settings_subtitle-button__iNyot,
-.ui-lib_list__1KN23:first-child .ui-lib_list-item__YH0DO:nth-child(1),
-.ui-lib_list__1KN23:first-child .ui-lib_list-item__YH0DO:nth-child(2) { 
+/* 2. 设置页专用：通过父级类名锁定，保护模型选择器 */
+.settings_settings__427bK #custom-model .settings_subtitle-button__iNyot,
+.settings_settings__427bK .ui-lib_list__1KN23:first-child .ui-lib_list-item__YH0DO:nth-child(1),
+.settings_settings__427bK .ui-lib_list__1KN23:first-child .ui-lib_list-item__YH0DO:nth-child(2) { 
     display: none !important; 
 }
 
-/* 3. 设置页：隐藏专家参数、接口开关、语音板块及实时聊天 */
-.ui-lib_list-item__YH0DO:has(.input-range_input-range__SuxRd),
-.ui-lib_list-item__YH0DO:has(input[aria-label="自定义接口"]),
-.ui-lib_list__1KN23:has(option[value="OpenAI-TTS"]),
-.ui-lib_list__1KN23:has(input[aria-label="实时聊天"]) { 
+/* 3. 设置页：隐藏冗余参数 */
+.settings_settings__427bK .ui-lib_list-item__YH0DO:has(.input-range_input-range__SuxRd),
+.settings_settings__427bK .ui-lib_list-item__YH0DO:has(input[aria-label="自定义接口"]),
+.settings_settings__427bK .ui-lib_list__1KN23:has(option[value="OpenAI-TTS"]),
+.settings_settings__427bK .ui-lib_list__1KN23:has(input[aria-label="实时聊天"]) { 
     display: none !important; 
 }

@@ -5,6 +5,7 @@ import styles from "./home.module.scss";
 import { IconButton } from "./button";
 import SettingsIcon from "../icons/settings.svg";
 import GithubIcon from "../icons/github.svg";
+// 默认图标可以保留导入，但我们在下方会使用自定义组件替换它
 import ChatGptIcon from "../icons/chatgpt.svg";
 import AddIcon from "../icons/add.svg";
 import DeleteIcon from "../icons/delete.svg";
@@ -32,6 +33,35 @@ import dynamic from "next/dynamic";
 import { Selector, showConfirm } from "./ui-lib";
 import clsx from "clsx";
 import { isMcpEnabled } from "../mcp/actions";
+
+// --- 自定义 LeoJots Logo 组件 ---
+const LeoJotsLogo = () => (
+  <svg className="h-9 w-auto" viewBox="0 0 280 60" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: '140px', height: 'auto' }}>
+    <style>{`
+      .animate-float { animation: float 3s ease-in-out infinite; }
+      .animate-pulse-scale { 
+        animation: pulse-scale 2s ease-in-out infinite; 
+        transform-box: fill-box; 
+        transform-origin: center; 
+      }
+      @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-3px); } }
+      @keyframes pulse-scale { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.25); } }
+    `}</style>
+    <g className="animate-float">
+      <path d="M36 10V18" stroke="#4F46E5" strokeWidth="3" strokeLinecap="round" />
+      <circle cx="36" cy="8" r="3" fill="#4F46E5" />
+      <rect x="18" y="18" width="36" height="32" rx="8" fill="#4F46E5" />
+      <rect x="22" y="24" width="28" height="20" rx="4" fill="#EFF6FF" />
+      <circle className="animate-pulse-scale" cx="30" cy="34" r="3" fill="#0EA5E9" />
+      <circle className="animate-pulse-scale" cx="42" cy="34" r="3" fill="#0EA5E9" style={{ animationDelay: '0.5s' }} />
+    </g>
+    <text x="72" y="39" fontFamily="Inter, system-ui, sans-serif" fontWeight="800" fontSize="28" fill="currentColor" letterSpacing="-0.03em">
+      Leo<tspan fill="#4F46E5">Jots</tspan>
+    </text>
+    <rect x="192" y="18" width="70" height="24" rx="6" fill="#EFF6FF" stroke="#BFDBFE" strokeWidth="1" />
+    <text x="227" y="35" fontFamily="Inter, system-ui, sans-serif" fontWeight="700" fontSize="13" fill="#4338CA" textAnchor="middle">AI CHAT</text>
+  </svg>
+);
 
 const DISCOVERY = [
   { name: Locale.Plugin.Name, path: Path.Plugins },
@@ -81,7 +111,6 @@ export function useDragSideBar() {
   };
 
   const onDragStart = (e: MouseEvent) => {
-    // Remembers the initial width each time the mouse is pressed
     startX.current = e.clientX;
     startDragWidth.current = config.sidebarWidth;
     const dragStartTime = Date.now();
@@ -103,11 +132,9 @@ export function useDragSideBar() {
     };
 
     const handleDragEnd = () => {
-      // In useRef the data is non-responsive, so `config.sidebarWidth` can't get the dynamic sidebarWidth
       window.removeEventListener("pointermove", handleDragMove);
       window.removeEventListener("pointerup", handleDragEnd);
 
-      // if user click the drag icon, should toggle the sidebar
       const shouldFireClick = Date.now() - dragStartTime < 300;
       if (shouldFireClick) {
         toggleSideBar();
@@ -154,7 +181,6 @@ export function SideBarContainer(props: {
         [styles["narrow-sidebar"]]: shouldNarrow,
       })}
       style={{
-        // #3016 disable transition on ios mobile screen
         transition: isMobileScreen && isIOSMobile ? "none" : undefined,
       }}
     >
@@ -234,7 +260,6 @@ export function SideBar(props: { className?: string }) {
   const [mcpEnabled, setMcpEnabled] = useState(false);
 
   useEffect(() => {
-    // 检查 MCP 是否启用
     const checkMcpStatus = async () => {
       const enabled = await isMcpEnabled();
       setMcpEnabled(enabled);
@@ -250,9 +275,9 @@ export function SideBar(props: { className?: string }) {
       {...props}
     >
       <SideBarHeader
-        title="NextChat"
-        subTitle="Build your own AI assistant."
-        logo={<ChatGptIcon />}
+        title="LeoJots"                 // 已修改标题
+        subTitle="Your Personal AI Hub." // 你可以根据需要修改副标题
+        logo={<LeoJotsLogo />}         // 已应用你的自定义 SVG Logo
         shouldNarrow={shouldNarrow}
       >
         <div className={styles["sidebar-header-bar"]}>

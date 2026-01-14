@@ -33,14 +33,22 @@ import { Selector, showConfirm } from "./ui-lib";
 import clsx from "clsx";
 import { isMcpEnabled } from "../mcp/actions";
 
-// --- 自定义 LeoJots Logo 组件 (移除了固定宽度，使其自适应) ---
+// --- 自定义 LeoJots Logo 组件 ---
 const LeoJotsLogo = () => (
   <svg 
     viewBox="0 0 280 60" 
     fill="none" 
     xmlns="http://www.w3.org/2000/svg" 
-    // 关键：添加 filter: 'none' 和 opacity: 1 来覆盖 NextChat 的默认样式
-    style={{ width: '100%', height: 'auto', maxWidth: '180px', filter: 'none', opacity: 1 }}
+    // 强制解除滤镜并放大尺寸至 210px
+    style={{ 
+      width: '100%', 
+      height: 'auto', 
+      maxWidth: '210px', 
+      filter: 'none', 
+      opacity: 1,
+      display: 'block',
+      margin: '0 auto' 
+    }}
   >
     <style>{`
       .animate-float { animation: float 3s ease-in-out infinite; }
@@ -60,7 +68,7 @@ const LeoJotsLogo = () => (
       <circle className="animate-pulse-scale" cx="30" cy="34" r="3" fill="#0EA5E9" />
       <circle className="animate-pulse-scale" cx="42" cy="34" r="3" fill="#0EA5E9" style={{ animationDelay: '0.5s' }} />
     </g>
-    {/* 关键：将 fill="currentColor" 改回固定的颜色值 #0F172A */}
+    {/* 锁定 Leo 为深蓝色，防止在 Light 模式下变灰 */}
     <text x="72" y="39" fontFamily="Inter, system-ui, sans-serif" fontWeight="800" fontSize="28" fill="#0F172A" letterSpacing="-0.03em">
       Leo<tspan fill="#4F46E5">Jots</tspan>
     </text>
@@ -281,9 +289,10 @@ export function SideBar(props: { className?: string }) {
       {...props}
     >
       <SideBarHeader
-        title={<LeoJotsLogo />}         // 整个板块只显示 Logo
-        subTitle={null}                 // 移除文案
-        logo={null}                     // 移除右侧小图标
+        // 核心修改：移除 title, subTitle, logo
+        title={<LeoJotsLogo />}
+        subTitle={null}
+        logo={null}
         shouldNarrow={shouldNarrow}
       >
         <div className={styles["sidebar-header-bar"]}>

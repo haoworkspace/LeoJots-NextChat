@@ -364,22 +364,7 @@ export function SideBar(props: { className?: string }) {
                 }}
               />
             </div>
-            {/* --- 新增：左下角个人信息板块 --- */}
-            {!shouldNarrow && (
-              <div style={{ 
-                display: 'flex', 
-                flexDirection: 'column', 
-                justifyContent: 'center',
-                padding: '0 10px',
-                opacity: 0.6,
-                fontSize: '10px',
-                lineHeight: '1.2',
-                fontFamily: 'monospace'
-              }}>
-                <div style={{ fontWeight: 'bold' }}>LEO</div>
-                <div>v1.2.0-stable</div>
-              </div>
-            )}
+            {/* --- 已移除名字和版本号信息板块，恢复原状 --- */}
             <div className={styles["sidebar-action"]}>
               <Link to={Path.Settings}>
                 <IconButton

@@ -404,19 +404,16 @@ pre {
 .home_sidebar-action__IVfyJ:has(a[href*="github.com"]) { display: none !important; }
 .sidebar-header { padding: 20px; }
 
-/* 2. 设置页专用：通过父级类名锁定，保护模型选择器 */
-.settings_settings__427bK #custom-model .settings_subtitle-button__iNyot,
-.settings_settings__427bK .ui-lib_list__1KN23:first-child .ui-lib_list-item__YH0DO:nth-child(1),
-.settings_settings__427bK .ui-lib_list__1KN23:first-child .ui-lib_list-item__YH0DO:nth-child(2) { 
-    display: none !important; 
+/* 2. 设置页专用：仅隐藏主页面的前两项，排除弹窗内容 */
+.settings_settings__427bk .ui-lib_list__1KN23:first-child:not(.ui-lib_modal-content___F0dm *) .ui-lib_list-item__YH0DO:nth-child(1),
+.settings_settings__427bk .ui-lib_list__1KN23:first-child:not(.ui-lib_modal-content___F0dm *) .ui-lib_list-item__YH0DO:nth-child(2) {
+    display: none !important;
 }
 
-/* 3. 设置页：隐藏冗余参数 */
-.settings_settings__427bK .ui-lib_list-item__YH0DO:has(.input-range_input-range__SuxRd),
-.settings_settings__427bK .ui-lib_list-item__YH0DO:has(input[aria-label="自定义接口"]),
-.settings_settings__427bK .ui-lib_list__1KN23:has(option[value="OpenAI-TTS"]),
-.settings_settings__427bK .ui-lib_list__1KN23:has(input[aria-label="实时聊天"]) { 
-    display: none !important; 
+/* 3. 设置页专用：隐藏冗余参数，同时排除弹窗内容 */
+.settings_settings__427bk .ui-lib_list__1KN23:not(.ui-lib_modal-content___F0dm *):has(option[value="OpenAI-TTS"]),
+.settings_settings__427bk .ui-lib_list__1KN23:not(.ui-lib_modal-content___F0dm *):has(input[aria-label="实时聊天"]) {
+    display: none !important;
 }
 
 /* 隐藏“分享到 ShareGPT”按钮 */

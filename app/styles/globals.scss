@@ -409,6 +409,10 @@ pre {
 .settings_settings__427bk .ui-lib_list__1KN23:first-child:not(.ui-lib_modal-content___F0dm *) .ui-lib_list-item__YH0DO:nth-child(2) {
     display: none !important;
 }
+/* 强制显示云端数据的操作图标 */
+.ui-lib_list-item__YH0DO .ui-lib_list-item-actions {
+    display: flex !important;
+}
 
 /* 3. 设置页专用：隐藏冗余参数，同时排除弹窗内容 */
 .settings_settings__427bk .ui-lib_list__1KN23:not(.ui-lib_modal-content___F0dm *):has(option[value="OpenAI-TTS"]),
